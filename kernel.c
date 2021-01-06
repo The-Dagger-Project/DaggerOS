@@ -110,5 +110,5 @@ void kernel_main(void)
 	terminal_initialize();
  
 	/* Newline support is left as an exercise. */
-	terminal_writestring("Hello, kernel World!\n Made By Ayman0x03 & code2006\n");
+	terminal_writestring("Hello, kernel World!\n Made By Ayman0x03 & aa2006\n");
 }
