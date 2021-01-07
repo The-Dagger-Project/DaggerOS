@@ -88,9 +88,10 @@ void terminal_putchar(char c)
 	terminal_putentryat(c, terminal_color, terminal_column, terminal_row);
 	if (++terminal_column == VGA_WIDTH) {
 		terminal_column = 0;
-		if (c == "\n")
+		if (c == "\n") {
 			terminal_row ++;
-		terminal_column = 0 ;
+		    terminal_column = 0;
+        }
 	} 
 }
  
