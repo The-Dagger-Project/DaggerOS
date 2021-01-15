@@ -15,5 +15,5 @@ void kernel_main(void) {
 	printf("               /___,' \\__,_|\\__, |\\__, |\\___|_|    \\___/  \\__/\n");
 	printf("                            |___/ |___/            \n");
 	terminal_setcolor(VGA_COLOR_LIGHT_GREY);
-	printf("\n\n\n                           Made by aa2006 & Ayman0x03\n");
+	printf("\n\n\n                           Made by Ayman0x03 && aa2006\n");
 }
