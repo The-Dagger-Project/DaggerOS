@@ -12,20 +12,14 @@ menuentry "DaggerOS" {
 	multiboot /boot/myos.kernel
 }
 
-menuentry "System shutdown" {
+menuentry "System Shutdown" {
 	echo "System shutting down..."
 	halt
 }
 
-menuentry "System restart" {
+menuentry "System Restart" {
 	echo "System rebooting..."
 	reboot
 }
-
-if [ ${grub_platform} == "efi" ]; then
-	menuentry "Firmware setup" {
-		fwsetup
-	}
-fi
 EOF
 grub-mkrescue -o dagger.iso isodir
