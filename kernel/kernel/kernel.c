@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include <kernel/tty.h>
+#include "../drivers/kbd.h"
 #include "../arch/i386/vga.h"
 
 
@@ -15,5 +16,17 @@ void kernel_main(void) {
 	printf("               /___,' \\__,_|\\__, |\\__, |\\___|_|    \\___/  \\__/\n");
 	printf("                            |___/ |___/            \n");
 	terminal_setcolor(VGA_COLOR_LIGHT_GREY);
-	printf("\n\n\n                           Made by Ayman0x03 && aa2006\n");
+	printf("\n\n\n                           Made by Ayman0x03 & aa2006\n\n\n");
+
+	int cmd = 0;
+	hello_user("root");
+	while(1){       //-------------Command loop
+    	prompt();
+    	cmd = get_command();
+    	execute_command(cmd);
+    	if(cmd == 2){
+      		break;
+    	}
+    	cmd = 0;
+  	}
 }
