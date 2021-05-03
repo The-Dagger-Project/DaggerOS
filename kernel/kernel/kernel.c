@@ -7,7 +7,7 @@
 
 void kernel_main(void) {
 	terminal_initialize();
-	terminal_setcolor(VGA_COLOR_LIGHT_BLUE);
+	terminal_setcolor(VGA_COLOR_BLUE);
 	printf("                   ___                                ___  __ \n");
 	printf("                  /   \\__ _  __ _  __ _  ___ _ __    /___\\/ _\\ \n");
 	printf("                 / /\\ / _` |/ _` |/ _` |/ _ \\ '__|  //  //\\ \\ \n");
