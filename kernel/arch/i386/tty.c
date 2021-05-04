@@ -35,7 +35,6 @@ void terminal_putentryat(unsigned char c, uint8_t color, size_t x, size_t y) {
 }
 
 void terminal_start() {
-	terminal_initialize();
 	terminal_setcolor(VGA_COLOR_BLUE);
 	printf("                   ___                                ___  __ \n");
 	printf("                  /   \\__ _  __ _  __ _  ___ _ __    /___\\/ _\\ \n");
@@ -156,7 +155,7 @@ void getline(char* string, int len) {
 				terminal_column --;
 				terminal_putentryat(' ', terminal_color, terminal_column, terminal_row);
 				i --;
-			} else {
+			} else if (temp >= 22 && temp <= 127) {
 				terminal_putchar(temp);
 				string[i] = temp;
 				i ++;
@@ -187,7 +186,31 @@ void help() {
   	terminal_writestring("  shutdown ---> power off machine\n");
   	terminal_writestring("  echo -------> type and receive a response\n");
   	terminal_writestring("  clear ------> clear screen\n");
+	terminal_writestring("  init -------> display start screen\n");
+	terminal_writestring("  color ------> change text color\n");
 	terminal_writestring("Warning: special keys (esc, ctrl, ...) will not work.\n");
+}
+
+void color() {
+	char string[50];
+	terminal_writestring("Enter color: ");
+	getline(string, 50);
+	printf("\n");
+	if (strcmp(string, "black\x0D") == 1) {
+		terminal_color = vga_entry_color(VGA_COLOR_BLACK, VGA_COLOR_WHITE);
+	} else if (strcmp(string, "white\x0D") == 1) {
+		terminal_color = vga_entry_color(VGA_COLOR_WHITE, VGA_COLOR_BLACK);
+	} else if (strcmp(string, "blue\x0D") == 1) {
+		terminal_setcolor(VGA_COLOR_BLUE);
+	} else if (strcmp(string, "green\x0D") == 1) {
+		terminal_setcolor(VGA_COLOR_GREEN);
+	} else if (strcmp(string, "red\x0D") == 1) {
+		terminal_setcolor(VGA_COLOR_RED);
+	}  else if (strcmp(string, "yellow\x0D") == 1) {
+		terminal_setcolor(VGA_COLOR_LIGHT_GREEN);
+	} else {
+		terminal_writestring("Color not found\n");
+	}
 }
 
 void echo() {
@@ -207,7 +230,7 @@ void shutdown() {
 int get_command() {
 	int cmd = 1;
 	char string[50];
-	getline(string, 10);
+	getline(string, 50);
 	if(strcmp(string,"help\x0D") == 1){
 		cmd = 1;
 	} else if(strcmp(string,"shutdown\x0D") == 1) {
@@ -216,10 +239,14 @@ int get_command() {
 		cmd = 3;
 	} else  if(strcmp(string,"clear\x0D") == 1) {
 		cmd = 4;
-	} else {
+	} else if(strcmp(string, "init\x0D") == 1) {
 		cmd = 5;
+	} else if(strcmp(string, "color\x0D") == 1) {
+		cmd = 6;
+	} else {
+		cmd = 7;
 	}
-	memset(string,0,10);
+	memset(string,0,50);
 	terminal_writestring("\n");
 	return cmd;
 }
@@ -238,6 +265,12 @@ void execute_command(int cmd){
     case 4:
       terminal_clearscreen();
       break;
+	case 5:
+	  terminal_start();
+	  break;
+	case 6:
+	  color();
+	  break;
     default: 
       terminal_writestring("[!]dsh: Command not found\n");
   }

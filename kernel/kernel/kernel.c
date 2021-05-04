@@ -7,6 +7,7 @@
 
 
 void kernel_main(void) {
+	terminal_initialize();
 	terminal_start();
 	
 	int cmd = 0;
