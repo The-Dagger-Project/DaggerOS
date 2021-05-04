@@ -200,6 +200,7 @@ void help() {
   	terminal_writestring("  clear ------> clear screen\n");
 	terminal_writestring("  init -------> display start screen\n");
 	terminal_writestring("  color ------> change text color\n");
+	terminal_writestring("  about ------> display about information\n");
 	terminal_writestring("Warning: special keys (esc, ctrl, ...) will not work.\n");
 }
 
@@ -240,9 +241,7 @@ void about(){
 }
 void dsh(){
 	char string[50];
-	terminal_writestring("DaggerSH is Still in Development.\n");
-
-
+	terminal_writestring("DaggerSH is still in development.\n");
 }
 
 void shutdown() {
