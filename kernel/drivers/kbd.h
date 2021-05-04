@@ -324,7 +324,7 @@ static int _kkybrd_scancode_std [] = {
 	KEY_KP_NUMLOCK,	//0x45
 	KEY_SCROLLLOCK,	//0x46
 	KEY_HOME,		//0x47
-	KEY_KP_8,		//0x48	//keypad up arrow
+	KEY_UP,		//0x48	//keypad up arrow
 	KEY_PAGEUP,		//0x49
 	KEY_KP_2,		//0x50	//keypad down arrow
 	KEY_KP_3,		//0x51	//keypad page down
