@@ -2,7 +2,7 @@
 DaggerOS is a hobbyist, Unix-like OS built from scratch. It is still in production, and has limited features.
 
 # Download and Install
-You can download the ISO from the realeases page.
+You can download the ISO from the releases page.
 
 ## Build from source
 ### 1- Requirements
