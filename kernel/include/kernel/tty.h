@@ -11,6 +11,7 @@
 void terminal_initialize(void);
 void terminal_setcolor(uint8_t color);
 void terminal_putentryat(unsigned char c, uint8_t color, size_t x, size_t y);
+void terminal_start();
 void terminal_scroll(void);
 void terminal_clear_line(size_t y);
 void terminal_clearscreen(void);
@@ -27,5 +28,5 @@ void help();
 void echo();
 void shutdown();
 int get_command();
-void execute_command(int cmd);
+void execute_command();
 #endif

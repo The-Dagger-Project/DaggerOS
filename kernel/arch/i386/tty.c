@@ -34,6 +34,19 @@ void terminal_putentryat(unsigned char c, uint8_t color, size_t x, size_t y) {
 	terminal_buffer[index] = vga_entry(c, color);
 }
 
+void terminal_start() {
+	terminal_initialize();
+	terminal_setcolor(VGA_COLOR_BLUE);
+	printf("                   ___                                ___  __ \n");
+	printf("                  /   \\__ _  __ _  __ _  ___ _ __    /___\\/ _\\ \n");
+	printf("                 / /\\ / _` |/ _` |/ _` |/ _ \\ '__|  //  //\\ \\ \n");
+	printf("                / /_// (_| | (_| | (_| |  __/ |    / \\_// _\\ \\ \n");
+	printf("               /___,' \\__,_|\\__, |\\__, |\\___|_|    \\___/  \\__/\n");
+	printf("                            |___/ |___/            \n");
+	terminal_setcolor(VGA_COLOR_LIGHT_GREY);
+	printf("\n\n\n                           Made by Ayman0x03 & aa2006\n\n\n");
+}
+
 void terminal_scroll(){
     for(int i = 0; (long unsigned int)i < VGA_HEIGHT; i++){
         for (int m = 0; (long unsigned int)m < VGA_WIDTH; m++){
@@ -166,6 +179,7 @@ void hello_user(char* user) {
 	terminal_setcolor(VGA_COLOR_LIGHT_GREY);
 }
 
+// ---------------------------------- Basic Commands ------------------------------------
 void help() {
 	terminal_writestring("---- HELP MENU ----\n");
   	terminal_writestring("Commands:\n");
@@ -186,30 +200,24 @@ void echo() {
 
 void shutdown() {
 	terminal_clearscreen();
-	terminal_writestring("Shutting down...");
+	terminal_writestring("It is now safe to shutdown your machine");
 	__asm__ __volatile__("outw %1, %0" : : "dN" ((uint16_t)0xD004), "a" ((uint16_t)0x2000));
 }
 
 int get_command() {
 	int cmd = 1;
-	char string[10];
+	char string[50];
 	getline(string, 10);
 	if(strcmp(string,"help\x0D") == 1){
 		cmd = 1;
-	} else {
-		if(strcmp(string,"shutdown\x0D") == 1) {
+	} else if(strcmp(string,"shutdown\x0D") == 1) {
 		cmd = 2;
-		} else {
-		if(strcmp(string,"echo\x0D") == 1){
-			cmd = 3;
-		} else { 
-			if(strcmp(string,"clear\x0D") == 1) {
-			cmd = 4;
-			} else {
-			cmd = 5;
-			}
-		}
-		}
+	} else if(strcmp(string,"echo\x0D") == 1){
+		cmd = 3;
+	} else  if(strcmp(string,"clear\x0D") == 1) {
+		cmd = 4;
+	} else {
+		cmd = 5;
 	}
 	memset(string,0,10);
 	terminal_writestring("\n");
@@ -231,6 +239,6 @@ void execute_command(int cmd){
       terminal_clearscreen();
       break;
     default: 
-      terminal_writestring("[!]nsh: Command not found\n");
+      terminal_writestring("[!]dsh: Command not found\n");
   }
 }
