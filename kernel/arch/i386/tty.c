@@ -45,6 +45,18 @@ void terminal_start() {
 	terminal_setcolor(VGA_COLOR_LIGHT_GREY);
 	printf("\n\n\n                           Made by Ayman0x03 & aa2006\n\n\n");
 }
+void init() {
+	terminal_setcolor(VGA_COLOR_BLUE);
+	printf("                   ___                                ___  __ \n");
+	printf("                  /   \\__ _  __ _  __ _  ___ _ __    /___\\/ _\\ \n");
+	printf("                 / /\\ / _` |/ _` |/ _` |/ _ \\ '__|  //  //\\ \\ \n");
+	printf("                / /_// (_| | (_| | (_| |  __/ |    / \\_// _\\ \\ \n");
+	printf("               /___,' \\__,_|\\__, |\\__, |\\___|_|    \\___/  \\__/\n");
+	printf("                            |___/ |___/            \n");
+	terminal_setcolor(VGA_COLOR_LIGHT_GREY);
+	printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n                           Made by Ayman0x03 & aa2006\n\n\n");
+}
+
 
 void terminal_scroll(){
     for(int i = 0; (long unsigned int)i < VGA_HEIGHT; i++){
@@ -220,6 +232,18 @@ void echo() {
 	printf("\n");
 	terminal_writestring(string);
 }
+void about(){
+	char string[50];
+	terminal_writestring("DaggerOS is a hobbyist, Unix-like OS built from scratch. It is still in \n production, and has limited features.\n" );
+	terminal_writestring("Made By Ayman0x03 & aa2006 in behalf of The Dagger Project. \n");
+
+}
+void dsh(){
+	char string[50];
+	terminal_writestring("DaggerSH is Still in Development.\n");
+
+
+}
 
 void shutdown() {
 	terminal_clearscreen();
@@ -243,9 +267,14 @@ int get_command() {
 		cmd = 5;
 	} else if(strcmp(string, "color\x0D") == 1) {
 		cmd = 6;
-	} else {
+	} else if(strcmp(string, "about\x0D") == 1) {
 		cmd = 7;
+	}  else if(strcmp(string, "dsh\x0D") == 1) {
+		cmd = 8;
+	}  else {
+		cmd = 9;
 	}
+
 	memset(string,0,50);
 	terminal_writestring("\n");
 	return cmd;
@@ -266,11 +295,17 @@ void execute_command(int cmd){
       terminal_clearscreen();
       break;
 	case 5:
-	  terminal_start();
+	  init();
 	  break;
 	case 6:
 	  color();
 	  break;
+	case 7:
+	 about();
+	 break;
+	case 8:
+	 dsh();
+	 break;
     default: 
       terminal_writestring("[!]dsh: Command not found\n");
   }
