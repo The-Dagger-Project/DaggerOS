@@ -204,9 +204,28 @@ void help() {
 	terminal_writestring("Warning: special keys (esc, ctrl, ...) will not work.\n");
 }
 
+/* Available colors:
+	VGA_COLOR_BLACK = 0,
+	VGA_COLOR_BLUE = 1,
+	VGA_COLOR_GREEN = 2,
+	VGA_COLOR_CYAN = 3,
+	VGA_COLOR_RED = 4,
+	VGA_COLOR_MAGENTA = 5,
+	VGA_COLOR_BROWN = 6,
+	VGA_COLOR_LIGHT_GREY = 7,
+	VGA_COLOR_DARK_GREY = 8,
+	VGA_COLOR_LIGHT_BLUE = 9,
+	VGA_COLOR_LIGHT_GREEN = 10,
+	VGA_COLOR_LIGHT_CYAN = 11,
+	VGA_COLOR_LIGHT_RED = 12,
+	VGA_COLOR_LIGHT_MAGENTA = 13,
+	VGA_COLOR_LIGHT_BROWN = 14,
+	VGA_COLOR_WHITE = 15,
+*/
+
 void color() {
 	char string[50];
-	terminal_writestring("Enter color: ");
+	terminal_writestring("Enter color or type 'help' for list of colors: ");
 	getline(string, 50);
 	printf("\n");
 	if (strcmp(string, "black\x0D") == 1) {
@@ -219,10 +238,27 @@ void color() {
 		terminal_setcolor(VGA_COLOR_GREEN);
 	} else if (strcmp(string, "red\x0D") == 1) {
 		terminal_setcolor(VGA_COLOR_RED);
-	}  else if (strcmp(string, "yellow\x0D") == 1) {
+	} else if (strcmp(string, "lightgreen\x0D") == 1) {
 		terminal_setcolor(VGA_COLOR_LIGHT_GREEN);
+	} else if (strcmp(string, "cyan\x0D") == 1) {
+		terminal_setcolor(VGA_COLOR_CYAN);
+	} else if (strcmp(string, "brown\x0D") == 1) {
+		terminal_setcolor(VGA_COLOR_BROWN);
+	} else if (strcmp(string, "magenta\x0D") == 1) {
+		terminal_setcolor(VGA_COLOR_MAGENTA);
+	} else if (strcmp(string, "help\x0D") == 1) {
+		terminal_writestring("Available colors are: \n");
+		terminal_writestring("  + black\n");
+		terminal_writestring("  + white\n");
+		terminal_writestring("  + blue\n");
+		terminal_writestring("  + green\n");
+		terminal_writestring("  + red\n");
+		terminal_writestring("  + lightgreen\n");
+		terminal_writestring("  + cyan\n");
+		terminal_writestring("  + brown\n");
+		terminal_writestring("  + magenta\n");
 	} else {
-		terminal_writestring("Color not found\n");
+		terminal_writestring("Color not found.\n");
 	}
 }
 
@@ -234,13 +270,11 @@ void echo() {
 	terminal_writestring(string);
 }
 void about(){
-	char string[50];
 	terminal_writestring("DaggerOS is a hobbyist, Unix-like OS built from scratch. It is still in \n production, and has limited features.\n" );
 	terminal_writestring("Made By Ayman0x03 & aa2006 in behalf of The Dagger Project. \n");
 
 }
 void dsh(){
-	char string[50];
 	terminal_writestring("DaggerSH is still in development.\n");
 }
 

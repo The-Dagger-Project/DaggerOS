@@ -97,7 +97,7 @@ enum KYBRD_ERROR {
 	KYBRD_ERR_KEY					=	0xFF
 };
 
-enum KEYCODE {  //In this project we CAN'T PRINT ALL OF THIS. Can you fix it? :)
+enum KEYCODE {  
 
 // Alphanumeric keys ////////////////
 
