@@ -88,3 +88,6 @@ If you set up everything correctly, you should be able to run ./qemu.sh and see 
 
 # Issues
 Please see our Github Repo's issues page.
+
+# Community
+Join our Discord server: [https://discord.gg/a558y75tXG](https://discord.gg/a558y75tXG)
