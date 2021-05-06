@@ -91,3 +91,7 @@ Please see our Github Repo's issues page.
 
 # Community
 Join our Discord server: [https://discord.gg/a558y75tXG](https://discord.gg/a558y75tXG)
+
+# Screenshots
+![DaggerOS Boot menu](/images/daggeros-grub.png)
+![DaggerOS Welcome](/images/daggeros-welcome.png)
