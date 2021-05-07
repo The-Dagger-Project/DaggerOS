@@ -164,9 +164,11 @@ void getline(char* string, int len) {
 		temp = getchar();
 		if(isascii(temp) && temp != 0x0D) {
 			if(temp == 0x08) {
-				terminal_column --;
-				terminal_putentryat(' ', terminal_color, terminal_column, terminal_row);
-				i --;
+				if (terminal_column != 15) {
+					terminal_column --;
+					terminal_putentryat(' ', terminal_color, terminal_column, terminal_row);
+					i --;
+				}
 			} else if (temp >= 22 && temp <= 127) {
 				terminal_putchar(temp);
 				string[i] = temp;
