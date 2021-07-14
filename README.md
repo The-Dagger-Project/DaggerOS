@@ -70,7 +70,7 @@ git clone https://github.com/The-Dagger-Project/DaggerOS.git
 ```
 
 ### 4- Setup shell scripts
-There are 8 shell scripts '.sh' files in the root directory of the repo. Make them executable by running:
+There are 8 shell scripts '.sh' files in the `scripts/` directory of the repo. Make them executable by running:
 ```bash
 chmod +x build.sh
 chmod +x clean.sh
