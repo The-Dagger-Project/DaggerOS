@@ -81,7 +81,6 @@ chmod +x iso.sh
 chmod +x qemu.sh
 chmod +x target-triplet-to-arch.sh
 ```
-Then run them. (./build.sh, etc.)
 
 ### 5- Run the image
 If you set up everything correctly, you should be able to run ./qemu.sh and see the iso image running in QEMU.
